@@ -1,0 +1,46 @@
+<script>
+    function Usuario(nombre, apellido, libros, mascotas) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.libros = libros;
+        this.mascotas = mascotas;
+    }
+
+    Usuario.prototype.getFullName = function() {
+        return `${this.nombre} ${this.apellido}`
+    }
+
+    Usuario.prototype.addMascota = function(mascota) {
+        this.mascotas.push(mascota)
+    }
+
+    Usuario.prototype.getMascotas = function() {
+        return this.mascotas.length
+    }
+
+    Usuario.prototype.addBook = function(libro, autor) {
+        this.libros.push({ nombre: libro, autor: autor})
+    }
+
+    Usuario.prototype.getBooks = function() {
+        let arrayLibros = []
+        for ( let i = 0; i < this.libros.length; i++) {
+            arrayLibros.push(this.libros[i].nombre)
+        }
+        return arrayLibros
+    }
+
+    let nombre = 'Julian'
+    let apellido = 'Kim'
+    libros = []
+    mascotas = []
+    let usuario = new Usuario(nombre, apellido, libros, mascotas)
+    usuario.addMascota('perro')
+    usuario.addMascota('gato')
+    usuario.addBook('Eragon', 'Christopher Paolini')
+    usuario.addBook('El visitante', 'Stephen King')
+
+    console.log(usuario.getFullName());
+    console.log(usuario.getMascotas());
+    console.log(usuario.getBooks());
+</script>
